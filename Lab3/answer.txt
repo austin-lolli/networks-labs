@@ -1,0 +1,20 @@
+Austin Lolli
+Lab 3 
+COEN 146
+
+1. What does 'socket.connect()' do in the context of UDP?
+In UDP, connecting a socket allows for the use of socket.send(), which auotmatically sends data 
+to the IP address and Port specified in the tuple argument passed into socket.connect(). It also 
+means that instead of using recvfrom(), we can use recv, read or recvmsg  since the only incoming data 
+will be from the port and address from connect(). Lastly, socket.connect() upon a successful connection, 
+allows for the returning of asynchronous errors. These errors are useful for returing more information 
+(such as IP and port of a failed connection), which recvfrom, can not do. 
+
+2. Explain 'socket.send()' vs 'socket.sendto()' in the context of UDP. 
+Both socket.send() and socket.sendto() are very similar in their overall functions. For socket.send() 
+to be used, the socket must be connected to a remote socket via socket.connect(), and will send data 
+via the connected socket using the port and IP. If the socket does not have a remote connection, 
+socket.sendto() is used to send data. It requires the address as an additional argument as opposed 
+to socket.send(). Both functions send data to the address, the difference is socket.send() will always 
+send over the connected socket, while socket.sendto() could be used multiple times to send to different 
+addresses, but the address must be specified. 

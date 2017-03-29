@@ -1,0 +1,31 @@
+Austin Lolli 
+Lab 5 COEN 146 
+Answers.txt
+
+1. Why is chunk_size and packet_size different? 
+They are different because chunk_size is strictly for reading from the file, while 
+packet_size is larger because it needs to include the chunk of data, but also the 
+sequence number and checksum. 
+ 
+2. Explain the idea of a checksum in the context of this lab. 
+A checksum is a way of ensuring that a message was delivered intact. The checksum 
+for this lab appears to be the encoded data modulo 256 (presumably for the 8-bit 
+characters). By computing the checksum on both ends and comparing it, it is easy to 
+confirm that the data arrived as it was sent, and if it wasn't the computed 
+checksum will not match the sent checksum. 
+
+3. What is serialization and deserialization? 
+Serialization is a way of converting an object into a string format. This is useful 
+because things such as a dictionary can not be encoded, so by serializing it first, 
+it can then be sent. Deserialization is the opposite of this, it takes something 
+that was previously serialized and converts it back to the original format. 
+
+4. Ideas to handle lost messages and missing acknowledgements (full stop and wait)?
+We could change the client to where if it doesn't receive an acknowledgement after a 
+timeout (i.e. the client did not receive the acknowledgement from the server, either 
+because the server did not receive the packet or the acknowledgement was lost), it would 
+then resend the message to the server. This is one way to implement the full stop and 
+wait protocol, because while the current implementation only resends if the acknowledgement 
+sequence is the same as the last packet sent, this implementation would resend the packet 
+in any case except for when the acknowledgement signal was equal to the sequence number of
+the next expected packet.

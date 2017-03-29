@@ -1,0 +1,23 @@
+Austin Lolli
+Lab 6 
+answers.txt
+
+1. What is the maximum possible entropy for data of 'base64' encoding?
+  Maximum possible entropy for base64 encoding is 6, because there are 64 possible
+characters, meaning that any string where every possible character is in the string 
+the same amount of times, making every possible guess for the next character equally valid. 
+When every character is equally present, Shannon's entropy can be calculated as log base 2 
+of the number of characters, resulting in an entropy of 6 for base64 encoding. 
+
+2. Derive a general formula for getting maximum entropy (start with definition of 
+entropy). You can write by hand and scan, or use LaTeX or similar tool.  
+Hint: Recall that if encoding is `k` bits, then maximum entropy is `k`.
+  Entropy is a measure of the amount of disorder in a system. In the context of our random 
+string generator, entropy is the amount of information in bits (hence the log base 2 of 
+Shannon's law) we are missing in order to guess the next character to appeaer in the string. 
+To calculate the maximum entropy, take the ceiling function of the base 2 logarithm of the 
+total amount of characters there are to choose from. This gives us the amount of bits we 
+must correctly guess to pick the next character to appear. 
+LaTeX Notation: 
+$H(X)_{max} = -\lceil\log_2(x)\rceil $
+Link: https://latex.codecogs.com/gif.latex?$H(X)_{max}&space;=&space;-\lceil\log_2(x)\rceil&space;$
